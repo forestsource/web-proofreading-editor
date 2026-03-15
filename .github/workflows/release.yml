@@ -38,17 +38,17 @@ jobs:
             mkdir -p "dist/${name}"
 
             if [[ "$name" == *windows* ]]; then
-              bun build --compile --target="${target}" build/index.js --outfile "dist/${name}/proofreading-copilot.exe"
+              bun build --compile --target="${target}" build/index.js --outfile "dist/${name}/web-proofreading-editor.exe"
             else
-              bun build --compile --target="${target}" build/index.js --outfile "dist/${name}/proofreading-copilot"
+              bun build --compile --target="${target}" build/index.js --outfile "dist/${name}/web-proofreading-editor"
             fi
 
             cp -r build/client "dist/${name}/client"
 
             if [[ "$name" == *windows* ]]; then
-              (cd dist && zip -r "../proofreading-copilot-${name}.zip" "${name}/")
+              (cd dist && zip -r "../web-proofreading-editor-${name}.zip" "${name}/")
             else
-              tar -czf "proofreading-copilot-${name}.tar.gz" -C dist "${name}/"
+              tar -czf "web-proofreading-editor-${name}.tar.gz" -C dist "${name}/"
             fi
           done
 
